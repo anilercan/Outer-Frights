@@ -1,0 +1,74 @@
+{
+    "name": "AudioInputs",
+    "maps": [
+        {
+            "name": "Volume Control",
+            "id": "b8a2779b-2979-4e51-bc86-364e44e1b897",
+            "actions": [
+                {
+                    "name": "Mute",
+                    "type": "Button",
+                    "id": "df428cca-6ff0-4a23-b226-5a94ddba0606",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "VolumeUp",
+                    "type": "Button",
+                    "id": "4d1826aa-f36f-440a-b20a-2d5aa38f95e5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "VolumeDown",
+                    "type": "Button",
+                    "id": "39f1beb4-312b-4a9e-82d2-6d67824d4c3c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "bc95f13d-cc89-4a4d-bceb-6606d395a380",
+                    "path": "<Keyboard>/m",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Mute",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "942d072a-8987-4589-b021-0dfd441d0895",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "VolumeUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "299b879e-3541-45b6-bcad-f02d7f468f3d",
+                    "path": "<Keyboard>/ctrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "VolumeDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
