@@ -12,6 +12,7 @@ public class Health : MonoBehaviour
     AudioPlayer audioPlayer;
     ScoreKeeper scoreKeeper;
     LevelManager levelManager;
+    Boss enemyBoss;
     void Awake(){
         cameraShake=Camera.main.GetComponent<CameraShake>();
         audioPlayer=FindObjectOfType<AudioPlayer>();
@@ -20,11 +21,15 @@ public class Health : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other) {
         Damage damageDealer=other.GetComponent<Damage>();
-        if (damageDealer!=null){
+        if (damageDealer!=null&&gameObject.tag!="Shield"){
             TakeDamage(damageDealer.GetDamage());
             PlayHitEffect();
             audioPlayer.PlayDamageTaken();
             ShakeCamera();
+            damageDealer.Hit();
+        }
+        if (damageDealer!=null&&gameObject.tag=="Shield"){
+            audioPlayer.PlayShieldHit();
             damageDealer.Hit();
         }
     }
@@ -37,7 +42,15 @@ public class Health : MonoBehaviour
             else{
                 levelManager.LoadGameOver();
             }
-            Destroy(gameObject);
+            if (gameObject.tag!="Turret"){
+                Destroy(gameObject);
+            }
+            else{
+                //gameObject.GetComponent<Shooter>().ChangeFiringStatus();
+                enemyBoss=FindObjectOfType<Boss>();
+                enemyBoss.SetTurret(gameObject,false);
+                //gameObject.SetActive(false);
+            }
         }
     }
     void PlayHitEffect(){
@@ -53,5 +66,8 @@ public class Health : MonoBehaviour
     }
     public int GetHealth(){
         return health;
+    }
+    public void SetHealth(int setHealth){
+        health=setHealth;
     }
 }

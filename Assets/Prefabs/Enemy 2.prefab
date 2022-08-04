@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 7359296526760097744}
   m_Layer: 7
   m_Name: Enemy 2
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -239,6 +239,9 @@ MonoBehaviour:
   projectileSpeed: 10
   projectileLifetime: 5
   baseFireRate: 0.75
+  vShaped: 0
+  doubleLaser: 0
+  doubleDamage: 0
   useAI: 1
   fireRateVar: 0.25
   minFireRate: 0.1

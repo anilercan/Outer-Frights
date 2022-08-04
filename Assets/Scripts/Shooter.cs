@@ -17,7 +17,9 @@ public class Shooter : MonoBehaviour
     [SerializeField] bool useAI;
     [SerializeField] float fireRateVar=0f;
     [SerializeField] float minFireRate=0.1f;
-    [HideInInspector] public bool isFiring;
+    public bool isFiring;
+    float bulletSkew=0f;
+    bool skewIncreasing=true;
 
     Coroutine firingCo;
     AudioPlayer audioPlayer;
@@ -26,7 +28,7 @@ public class Shooter : MonoBehaviour
     }
     void Start()
     {
-        if (useAI){
+        if (useAI&&gameObject.tag!="BossBody"){
             isFiring=true;
         }
         
@@ -48,18 +50,18 @@ public class Shooter : MonoBehaviour
         while(true){
             GameObject instance=Instantiate(projectilePrefab,transform.position,Quaternion.identity);
             //Rigidbody2D rb2d=instance.GetComponent<Rigidbody2D>();
-            GameObject middleBullet = instance.transform.GetChild(0).gameObject;
+            GameObject firstBullet = instance.transform.GetChild(0).gameObject;
             if(useAI==false){ //rb2d!=null&&
-                middleBullet.GetComponent<Rigidbody2D>().velocity=new Vector2(0,projectileSpeed);
+                firstBullet.GetComponent<Rigidbody2D>().velocity=new Vector2(0,projectileSpeed);
                 //rb2d.velocity=transform.up*projectileSpeed;
                 //rb2d.velocity=new Vector2(0,projectileSpeed);
                 
                 if (vShaped==true){
                     GameObject leftBullet = instance.transform.GetChild(1).gameObject;
-                    //GameObject middleBullet = instance.transform.GetChild(1).gameObject;
+                    //GameObject firstBullet = instance.transform.GetChild(1).gameObject;
                     GameObject rightBullet = instance.transform.GetChild(2).gameObject;
                     leftBullet.GetComponent<Rigidbody2D>().velocity=new Vector2(-projectileSpeed/8,projectileSpeed);
-                    //middleBullet.GetComponent<Rigidbody2D>().velocity=new Vector2(0,projectileSpeed);
+                    //firstBullet.GetComponent<Rigidbody2D>().velocity=new Vector2(0,projectileSpeed);
                     rightBullet.GetComponent<Rigidbody2D>().velocity=new Vector2(projectileSpeed/8,projectileSpeed);
                     //Debug.Log("vshaped");
                 }
@@ -71,7 +73,43 @@ public class Shooter : MonoBehaviour
             }
             if(useAI==true){ //rb2d!=null&&
                 //rb2d.velocity=-transform.up*projectileSpeed;
-                middleBullet.GetComponent<Rigidbody2D>().velocity=new Vector2(0,-projectileSpeed);
+                if (gameObject.tag=="BossBody"){
+                    //GameObject rightBullet1 = instance.transform.GetChild(0).gameObject;
+                    GameObject rightBullet2 = instance.transform.GetChild(1).gameObject;
+                    GameObject leftBullet1 = instance.transform.GetChild(2).gameObject;
+                    GameObject leftBullet2 = instance.transform.GetChild(3).gameObject;
+                    //float randomSkew=Random.Range(0f,2f);
+                    if (bulletSkew<1.2f&&skewIncreasing==true){
+                        bulletSkew+=0.3f;
+                        if (bulletSkew==1.2f){
+                            skewIncreasing=false;
+                        }
+                    }
+                    else if (bulletSkew>-1.2f&&skewIncreasing==false){
+                        bulletSkew-=0.3f;
+                        if (bulletSkew==-1.2f){
+                            skewIncreasing=true;
+                        }
+                    }
+                    //bulletSkew=0;
+                    firstBullet.GetComponent<Rigidbody2D>().velocity=new Vector2(-projectileSpeed/5+bulletSkew,-projectileSpeed);
+                    rightBullet2.GetComponent<Rigidbody2D>().velocity=new Vector2(projectileSpeed/5+bulletSkew,-projectileSpeed);
+                    leftBullet1.GetComponent<Rigidbody2D>().velocity=new Vector2(-projectileSpeed/5+bulletSkew,-projectileSpeed);
+                    leftBullet2.GetComponent<Rigidbody2D>().velocity=new Vector2(projectileSpeed/5+bulletSkew,-projectileSpeed);
+
+                }
+                if (gameObject.tag=="Turret"){
+                    if (gameObject.name=="leftTurret"){
+                        firstBullet.transform.position+=new Vector3(0.075f,0f,0f);
+                    }
+                    if (gameObject.name=="rightTurret"){
+                        firstBullet.transform.position+=new Vector3(-0.075f,0f,0f);
+                    }
+                    //rightBullet.transform.position+=new Vector2(0.13f,0f);
+                }
+                if (gameObject.tag!="BossBody"){
+                    firstBullet.GetComponent<Rigidbody2D>().velocity=new Vector2(0,-projectileSpeed);
+                }
                 audioPlayer.PlayEnemyShootingClip();
             }
             Destroy(instance,projectileLifetime);
@@ -82,5 +120,11 @@ public class Shooter : MonoBehaviour
     }
     public void SetProjectile(GameObject projectile){
         projectilePrefab=projectile;
+    }
+    public bool FiringStatus(){
+        return isFiring;
+    }
+    public void ChangeFiringStatus(bool status){
+        isFiring=status;
     }
 }

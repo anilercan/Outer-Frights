@@ -6,15 +6,36 @@ public class EnemySpawner : MonoBehaviour
 {
     WaveConfigSO currentWave;
     [SerializeField] List<WaveConfigSO> waveConfigs;
+    [SerializeField] GameObject finalBoss;
     [SerializeField] float timeBetweenWaves=1f;
-    [SerializeField] float timeBetweenLoops=5f;
+    [SerializeField] float timeBetweenLoops=3f;
     [SerializeField] bool isLooping;
+    [SerializeField] bool bossSpawned=false;
+    Coroutine waveSpawning;
+    /*
     void Start()
     {
-        StartCoroutine(SpawnWaves());
+        StartCoroutine(Spawner());
+        
+    }
+    */
+    void Update(){
+        Spawner();
+    }
+    
+    void Spawner(){
+        if(bossSpawned==false&&waveSpawning==null){
+            //yield return new WaitForSeconds(timeBetweenLoops);
+            waveSpawning=StartCoroutine(SpawnWaves());
+        }
+        else if(bossSpawned==true&&waveSpawning!=null){
+            StopCoroutine(waveSpawning);
+            waveSpawning=null;
+        }
         
     }
     IEnumerator SpawnWaves(){
+        yield return new WaitForSeconds(timeBetweenLoops);
         do{
             foreach (WaveConfigSO wave in waveConfigs){
                 currentWave=wave;
@@ -27,12 +48,17 @@ public class EnemySpawner : MonoBehaviour
                 }
                 yield return new WaitForSeconds(timeBetweenWaves);
             }
-            yield return new WaitForSeconds(timeBetweenLoops);
+            //yield return new WaitForSeconds(timeBetweenLoops);
+            Instantiate(finalBoss,new Vector3(0,15,0),Quaternion.identity);
+            ChangeBossState();
         }
-        while(isLooping==true);
+        while(isLooping==true&&bossSpawned==false);
             
     }
     public WaveConfigSO GetCurrentWave(){
         return currentWave;
+    }
+    public void ChangeBossState(){
+        bossSpawned=!bossSpawned;
     }
 }

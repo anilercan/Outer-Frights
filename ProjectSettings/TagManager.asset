@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Boss
+  - Turret
+  - Shield
+  - Enemy
+  - Powerup
+  - BossBody
   layers:
   - Default
   - TransparentFX

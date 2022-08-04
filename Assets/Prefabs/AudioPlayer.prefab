@@ -50,6 +50,7 @@ MonoBehaviour:
   playerShootingClip: {fileID: 8300000, guid: 8e429cd26302ba5438d98cf7a912ad71, type: 3}
   enemyShootingClip: {fileID: 8300000, guid: 9feae2497a030ae4daf0c787a9ee06ae, type: 3}
   damageTakenClip: {fileID: 8300000, guid: 290aa484a25aae84e905deb88b054306, type: 3}
+  shieldHitClip: {fileID: 8300000, guid: 406fc9e54f4dcbb42bddeb4641895eb9, type: 3}
 --- !u!82 &1884692407581171740
 AudioSource:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ public class AudioPlayer : MonoBehaviour
     [SerializeField] AudioClip enemyShootingClip;
     [Header("Damage")]
     [SerializeField] AudioClip damageTakenClip;
+    [SerializeField] AudioClip shieldHitClip;
     AudioPlayer audioPlayer;
     bool muteAudio;
     bool bgmPlaying=true;
@@ -44,6 +45,9 @@ public class AudioPlayer : MonoBehaviour
     }
     public void PlayDamageTaken(){
         PlayClip(damageTakenClip,masterVolume);
+    }
+    public void PlayShieldHit(){
+        PlayClip(shieldHitClip,masterVolume);
     }
     void PlayClip(AudioClip clip, float volume){
         if (clip!=null){

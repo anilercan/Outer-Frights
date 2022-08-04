@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6890329203579110278}
   m_Layer: 0
   m_Name: V Powerup
-  m_TagString: Untagged
+  m_TagString: Powerup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76,12 +76,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d1374a7e12183ed448241652da4c39f6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: d33e3552713059b4db1a1e74a4a47b0b, type: 3}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.32, y: 0.32}
+  m_Size: {x: 0.25, y: 0.25}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -118,32 +118,35 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.19, y: 0.3}
-    newSize: {x: 0.32, y: 0.32}
+    oldSize: {x: 0.25, y: 0.25}
+    newSize: {x: 0.25, y: 0.25}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.09536881, y: 0.14742269}
-      - {x: -0.08326018, y: 0.15}
-      - {x: -0.09412993, y: -0.029650649}
-      - {x: -0.039320044, y: -0.05692977}
-      - {x: -0.052809995, y: -0.12824988}
-      - {x: -0.043609835, y: -0.1488694}
-      - {x: -0.013290167, y: -0.14913}
-      - {x: 0.08968332, y: -0.012295086}
-      - {x: 0.09282966, y: 0.017900566}
-      - {x: 0.058459967, y: 0.036140464}
-      - {x: 0.09412993, y: 0.1021498}
+    - - {x: 0.05417138, y: 0.06702035}
+      - {x: 0.025363702, y: 0.09515487}
+      - {x: -0.0266345, y: 0.09681144}
+      - {x: -0.055871047, y: 0.06574996}
+      - {x: -0.092029825, y: 0.06569387}
+      - {x: -0.110941514, y: 0.04326663}
+      - {x: -0.10956344, y: -0.0961403}
+      - {x: -0.016629422, y: -0.09739295}
+      - {x: -0.011899774, y: -0.06729117}
+      - {x: 0.0109021235, y: -0.067533724}
+      - {x: 0.013645526, y: -0.09482335}
+      - {x: 0.10889228, y: -0.09412686}
+      - {x: 0.109563425, y: 0.04158839}
+      - {x: 0.0899115, y: 0.06660954}
 --- !u!114 &6890329203579110278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,10 +159,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05d6faefc969a7441ad07a1f4532e369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 4315941649488242468, guid: 92a332ed25696dc43aeed4f61814aa45, type: 3}
   defaultProjectile: {fileID: 6801967348741159134, guid: 5b335b13dd9564246981c6bc15e0236c, type: 3}
   powerupProjectile: {fileID: 6801967348741159134, guid: 497fc1a395b114445a1dca80c6f6d943, type: 3}
-  powerupTime: 5
+  powerupDuration: 6
   vShaped: 1
   doubleLaser: 0
+  doubleDamage: 0
+  fasterLaser: 0
   healthPickup: 0

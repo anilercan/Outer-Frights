@@ -13,6 +13,7 @@ public class PickupSpawner : MonoBehaviour
         StartCoroutine(SpawnPickups());        
     }
     IEnumerator SpawnPickups(){
+        yield return new WaitForSeconds(2.5f);
         do{
             int xLocation=Random.Range(-10,10);
             currentPickup=pickupList[Random.Range(0,pickupList.Count)];

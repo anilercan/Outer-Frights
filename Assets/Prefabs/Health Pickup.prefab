@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3974789665194695915}
   m_Layer: 0
   m_Name: Health Pickup
-  m_TagString: Untagged
+  m_TagString: Powerup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 3974789665194695914}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.467, y: -2.553, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 0}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,12 +76,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7c8dd4f5174b83040b42e5f242a882e6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e46a2be3b95095144a4bb85f129fefa2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.32, y: 0.32}
+  m_Size: {x: 0.25, y: 0.25}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -118,29 +118,29 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.22, y: 0.21}
-    newSize: {x: 0.32, y: 0.32}
+    oldSize: {x: 0.25, y: 0.25}
+    newSize: {x: 0.25, y: 0.25}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.001561394, y: 0.105}
-      - {x: -0.11, y: -0.011516289}
-      - {x: -0.1102918, y: -0.074384615}
-      - {x: -0.079444826, y: -0.105}
-      - {x: -0.014594132, y: -0.10582588}
-      - {x: 0.09926433, y: 0.007297064}
-      - {x: 0.10339342, y: 0.071696706}
-      - {x: 0.066787, y: 0.105}
+    - - {x: -0.102208324, y: 0.091555774}
+      - {x: -0.12380562, y: 0.06995859}
+      - {x: -0.12380563, y: -0.076527975}
+      - {x: -0.106986046, y: -0.09573631}
+      - {x: 0.10400009, y: -0.09454193}
+      - {x: 0.12440272, y: -0.07831965}
+      - {x: 0.12320833, y: 0.06995859}
+      - {x: 0.10459728, y: 0.09275016}
 --- !u!114 &3974789665194695915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,10 +153,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05d6faefc969a7441ad07a1f4532e369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 4315941649488242468, guid: 92a332ed25696dc43aeed4f61814aa45, type: 3}
   defaultProjectile: {fileID: 6801967348741159134, guid: 5b335b13dd9564246981c6bc15e0236c, type: 3}
   powerupProjectile: {fileID: 6801967348741159134, guid: 497fc1a395b114445a1dca80c6f6d943, type: 3}
-  powerupTime: 5
+  powerupDuration: 6
   vShaped: 0
   doubleLaser: 0
+  doubleDamage: 0
+  fasterLaser: 0
   healthPickup: 1

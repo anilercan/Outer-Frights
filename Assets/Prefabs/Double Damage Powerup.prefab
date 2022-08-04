@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6890329203579110278}
   m_Layer: 0
   m_Name: Double Damage Powerup
-  m_TagString: Untagged
+  m_TagString: Powerup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76,12 +76,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9d1810e64d4db3d48a1fe6c22c74e319, type: 3}
-  m_Color: {r: 1, g: 0.0047169924, b: 0.0047169924, a: 0.40784314}
+  m_Sprite: {fileID: 21300000, guid: 6cb089aa887b74847a6f6145a6f315d6, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.32, y: 0.32}
+  m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -125,24 +125,22 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.31, y: 0.3}
-    newSize: {x: 0.32, y: 0.32}
+    oldSize: {x: 0.25, y: 0.25}
+    newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.06488981, y: 0.078065485}
-      - {x: -0.0022983141, y: 0.14755358}
-      - {x: -0.06766061, y: 0.07334412}
-      - {x: -0.16315489, y: 0.03677916}
-      - {x: -0.10525523, y: -0.04978589}
-      - {x: -0.10216634, y: -0.15163094}
-      - {x: 0.0020354553, y: -0.1340525}
-      - {x: 0.10358314, y: -0.15244648}
-      - {x: 0.10362426, y: -0.051029578}
-      - {x: 0.15663098, y: 0.03210028}
+    - - {x: -0.073346265, y: 0.1089685}
+      - {x: -0.093665704, y: 0.0893778}
+      - {x: -0.09512311, y: -0.08719158}
+      - {x: -0.07261757, y: -0.111154556}
+      - {x: 0.07334628, y: -0.11042587}
+      - {x: 0.0922083, y: -0.09010649}
+      - {x: 0.09366572, y: 0.087191656}
+      - {x: 0.067516625, y: 0.10751104}
 --- !u!114 &6890329203579110278
 MonoBehaviour:
   m_ObjectHideFlags: 0
