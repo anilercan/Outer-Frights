@@ -8,8 +8,10 @@ public class AudioPlayer : MonoBehaviour
     [Header("Shooting")]
     [SerializeField] AudioClip playerShootingClip;
     [SerializeField] AudioClip enemyShootingClip;
+    [SerializeField] AudioClip rocketClip;
     [Header("Damage")]
     [SerializeField] AudioClip damageTakenClip;
+    [SerializeField] AudioClip explosionClip;
     [SerializeField] AudioClip shieldHitClip;
     AudioPlayer audioPlayer;
     bool muteAudio;
@@ -40,11 +42,17 @@ public class AudioPlayer : MonoBehaviour
     public void PlayPlayerShootingClip(){
         PlayClip(playerShootingClip,masterVolume);
     }
+    public void PlayRocketClip(){
+        PlayClip(rocketClip,masterVolume);
+    }
     public void PlayEnemyShootingClip(){
         PlayClip(enemyShootingClip,masterVolume);
     }
     public void PlayDamageTaken(){
         PlayClip(damageTakenClip,masterVolume);
+    }
+    public void PlayExplosion(){
+        PlayClip(explosionClip,masterVolume/2);
     }
     public void PlayShieldHit(){
         PlayClip(shieldHitClip,masterVolume);

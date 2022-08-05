@@ -8,6 +8,7 @@ public class Pathfinder : MonoBehaviour
     WaveConfigSO waveConfig;
     List<Transform> waypoints;
     int waypointIndex=0;
+    bool currentlyFollowing=true;
     void Awake(){
         enemySpawner=FindObjectOfType<EnemySpawner>();
     }
@@ -24,7 +25,7 @@ public class Pathfinder : MonoBehaviour
         
     }
     void FollowPath(){
-        if (waypointIndex<waypoints.Count){
+        if (waypointIndex<waypoints.Count&&currentlyFollowing==true){
             Vector3 targetPosition=waypoints[waypointIndex].position;
             float delta=waveConfig.GetMoveSpeed()*Time.deltaTime;
             transform.position=Vector2.MoveTowards(transform.position,targetPosition,delta);
@@ -32,8 +33,11 @@ public class Pathfinder : MonoBehaviour
                 waypointIndex=waypointIndex+1;
             }
         }
-        else{
+        else if (waypointIndex>=waypoints.Count){
             Destroy(gameObject);
         }
+    }
+    public void SetFollowing(bool status){
+        currentlyFollowing=status;
     }
 }

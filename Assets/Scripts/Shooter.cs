@@ -21,6 +21,12 @@ public class Shooter : MonoBehaviour
     float bulletSkew=0f;
     bool skewIncreasing=true;
 
+    [Header("Player Rocket Launcher")]
+    [SerializeField] int rocketCount=1;
+    [SerializeField] GameObject rocketPrefab;
+    [SerializeField] float rocketCooldown=2f;
+    bool rocketOnCooldown=false;
+
     Coroutine firingCo;
     AudioPlayer audioPlayer;
     void Awake(){
@@ -117,6 +123,28 @@ public class Shooter : MonoBehaviour
             timeToNextProjectile=Mathf.Clamp(timeToNextProjectile,minFireRate,float.MaxValue);
             yield return new WaitForSeconds(timeToNextProjectile);
         }
+    }
+    public void FireRocket(){
+        StartCoroutine(RocketLauncher());
+    }
+    IEnumerator RocketLauncher(){
+        if (rocketCount>0&&rocketOnCooldown==false){
+            rocketOnCooldown=true;
+            rocketCount=rocketCount-1;
+            GameObject instance=Instantiate(rocketPrefab,transform.position,Quaternion.identity);
+            GameObject rocketBody = instance.transform.GetChild(0).gameObject;
+            rocketBody.GetComponent<Rigidbody2D>().velocity=new Vector2(0,projectileSpeed*2/3);
+            audioPlayer.PlayRocketClip();
+            yield return new WaitForSeconds(rocketCooldown);
+            rocketOnCooldown=false;
+            Destroy(instance,projectileLifetime);
+        }
+    }
+    public int GetRocketCount(){
+        return rocketCount;
+    }
+    public void SetRocketCount(int value){
+        rocketCount+=value;
     }
     public void SetProjectile(GameObject projectile){
         projectilePrefab=projectile;

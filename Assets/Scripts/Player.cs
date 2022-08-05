@@ -39,6 +39,9 @@ public class Player : MonoBehaviour
             shooter.isFiring=value.isPressed;
         }
     }
+    void OnRocket(){ //InputValue value
+        shooter.FireRocket();
+    }
     void InitBounds(){
         Camera mainCamera=Camera.main;
         minBounds=mainCamera.ViewportToWorldPoint(new Vector2(0,0));

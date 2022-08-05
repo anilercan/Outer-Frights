@@ -8,22 +8,32 @@ public class Powerup : MonoBehaviour
     //[SerializeField] Player player;
     Player player;
     Shooter playerShooter;
+    EnemySpawner enemySpawner;
+    [Header("General")]
+    [SerializeField] float powerupDuration=6f;
 
     [Header("Projectiles")]
     [SerializeField] GameObject defaultProjectile;
     [SerializeField] GameObject powerupProjectile;
-    [SerializeField] float powerupDuration=6f;
+    [Header("Powerup Type")]
     [SerializeField] bool vShaped;
     [SerializeField] bool doubleLaser;
     [SerializeField] bool doubleDamage;
     [SerializeField] bool fasterLaser;
     [SerializeField] bool healthPickup;
+    [SerializeField] bool rocketPickup;
+    [SerializeField] bool freezePickup;
+
+    //variables used in freeze
+    int enemyCount=0;
+    List<Vector2> currentVelocities=new List<Vector2>();
     
     void Awake(){
         player=FindObjectOfType<Player>();
         if (player!=null){
             playerShooter=player.GetComponent<Shooter>();
         }
+        enemySpawner=FindObjectOfType<EnemySpawner>();
     }
 
     void OnTriggerEnter2D(Collider2D other) {
@@ -73,7 +83,47 @@ public class Powerup : MonoBehaviour
                 player.GetComponent<Health>().TakeDamage(-(100-(player.GetComponent<Health>().GetHealth())));
             }
         }
+        if (rocketPickup==true){
+            playerShooter.SetRocketCount(3);
+        }
+        if (freezePickup==true){
+            //List<GameObject> enemiesOnScreen=new List<GameObject>();
+            FreezeEnemies();
+            yield return new WaitForSeconds(powerupDuration);
+            UnfreezeEnemies();
+        }
         Destroy(gameObject);
+    }
+    void FreezeEnemies(){
+        enemyCount=enemySpawner.transform.childCount;
+        //Debug.Log("Child count: "+enemyCount.ToString());
+        for (int i=0;i<enemyCount;i++){
+            GameObject currentChild=enemySpawner.transform.GetChild(i).gameObject;
+            if (currentChild.tag=="Enemy"){
+                currentChild.GetComponent<Pathfinder>().SetFollowing(false);
+                currentChild.GetComponent<Shooter>().ChangeFiringStatus(false);
+                Rigidbody2D currentRb2d=currentChild.GetComponent<Rigidbody2D>();
+                currentVelocities.Add(currentRb2d.velocity);
+                currentRb2d.velocity=new Vector2(0f,0f);
+            }
+            else if (currentChild.tag=="Boss"){
+                currentVelocities.Add(new Vector2(0f,0f));
+            }
+        }
+    }
+    void UnfreezeEnemies(){
+        for (int i=0;i<enemyCount;i++){
+            GameObject currentChild=enemySpawner.transform.GetChild(i).gameObject;
+            if (currentChild.tag=="Enemy"){
+                currentChild.GetComponent<Pathfinder>().SetFollowing(true);
+                currentChild.GetComponent<Shooter>().ChangeFiringStatus(true);
+                Rigidbody2D currentRb2d=currentChild.GetComponent<Rigidbody2D>();
+                //currentVelocities.Add(currentRb2d.velocity);
+                currentRb2d.velocity=currentVelocities[i];
+            }
+        }
+        enemyCount=0;
+        currentVelocities.Clear();
     }
     void SetAllFalse(){
         playerShooter.vShaped=false;

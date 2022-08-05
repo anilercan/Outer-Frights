@@ -250,3 +250,6 @@ MonoBehaviour:
   fireRateVar: 0.25
   minFireRate: 0.1
   isFiring: 0
+  rocketCount: 1
+  rocketPrefab: {fileID: 0}
+  rocketCooldown: 2

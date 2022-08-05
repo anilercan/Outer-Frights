@@ -24,7 +24,12 @@ public class Health : MonoBehaviour
         if (damageDealer!=null&&gameObject.tag!="Shield"){
             TakeDamage(damageDealer.GetDamage());
             PlayHitEffect();
-            audioPlayer.PlayDamageTaken();
+            if (other.tag!="Rocket"&&health>0){
+                audioPlayer.PlayDamageTaken();
+            }
+            else if (other.tag=="Rocket"&&health>0){
+                audioPlayer.PlayExplosion();
+            }
             ShakeCamera();
             damageDealer.Hit();
         }
@@ -37,6 +42,7 @@ public class Health : MonoBehaviour
         health=health-damage;
         if (health<=0){
             if (gameObject.tag!="Player"){
+                audioPlayer.PlayExplosion();
                 scoreKeeper.ModifyScore(scoreAdd);
             }
             else{

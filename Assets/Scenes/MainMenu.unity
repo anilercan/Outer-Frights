@@ -1797,7 +1797,7 @@ GameObject:
   - component: {fileID: 1744237645}
   - component: {fileID: 1744237644}
   m_Layer: 5
-  m_Name: ScoreText
+  m_Name: Keybinds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1847,10 +1847,12 @@ MonoBehaviour:
 
     LMB & space: shoot
 
-    shift: volume up
+    R: FIRE ROCKET
 
-    ctrl:
-    volume down
+    shift:
+    volume up
+
+    ctrl: volume down
 
     m: mute audio'
   m_isRightToLeft: 0

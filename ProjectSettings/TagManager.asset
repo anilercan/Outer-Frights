@@ -10,6 +10,7 @@ TagManager:
   - Enemy
   - Powerup
   - BossBody
+  - Rocket
   layers:
   - Default
   - TransparentFX
