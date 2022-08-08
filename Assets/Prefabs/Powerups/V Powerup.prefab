@@ -118,7 +118,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -159,11 +159,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05d6faefc969a7441ad07a1f4532e369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerupDuration: 6
   defaultProjectile: {fileID: 6801967348741159134, guid: 5b335b13dd9564246981c6bc15e0236c, type: 3}
   powerupProjectile: {fileID: 6801967348741159134, guid: 497fc1a395b114445a1dca80c6f6d943, type: 3}
-  powerupDuration: 6
   vShaped: 1
   doubleLaser: 0
   doubleDamage: 0
   fasterLaser: 0
   healthPickup: 0
+  rocketPickup: 0
+  freezePickup: 0

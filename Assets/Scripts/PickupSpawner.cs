@@ -24,4 +24,7 @@ public class PickupSpawner : MonoBehaviour
         }
         while(isLooping==true);
     }
+    public void SetPowerupSpawnTime(float value){
+        powerupCooldown=value;
+    }
 }

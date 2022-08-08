@@ -37,6 +37,9 @@ public class LevelManager : MonoBehaviour
     public void QuitGame(){
         Application.Quit();
     }
+    public void SetTimeScale(){
+        Time.timeScale=1;
+    }
     IEnumerator WaitAndLoad(string sceneName, float delay){
         yield return new WaitForSeconds(delay);
         SceneManager.LoadScene(sceneName);

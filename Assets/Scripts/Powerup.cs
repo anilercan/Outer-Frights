@@ -9,6 +9,7 @@ public class Powerup : MonoBehaviour
     Player player;
     Shooter playerShooter;
     EnemySpawner enemySpawner;
+    AudioPlayer audioPlayer;
     [Header("General")]
     [SerializeField] float powerupDuration=6f;
 
@@ -25,10 +26,12 @@ public class Powerup : MonoBehaviour
     [SerializeField] bool freezePickup;
 
     //variables used in freeze
-    int enemyCount=0;
+    //int enemyCount=0;
     List<Vector2> currentVelocities=new List<Vector2>();
+    List<GameObject> frozenEnemies=new List<GameObject>();
     
     void Awake(){
+        audioPlayer=FindObjectOfType<AudioPlayer>();
         player=FindObjectOfType<Player>();
         if (player!=null){
             playerShooter=player.GetComponent<Shooter>();
@@ -38,6 +41,7 @@ public class Powerup : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other) {
         if (other.tag=="Player"){
+            audioPlayer.PlayPickupClip();
             StartCoroutine(SetProjectile());
         }
     }
@@ -95,14 +99,15 @@ public class Powerup : MonoBehaviour
         Destroy(gameObject);
     }
     void FreezeEnemies(){
-        enemyCount=enemySpawner.transform.childCount;
+        //int enemyCount=enemySpawner.transform.childCount;
         //Debug.Log("Child count: "+enemyCount.ToString());
-        for (int i=0;i<enemyCount;i++){
+        for (int i=0;i<enemySpawner.transform.childCount;i++){
             GameObject currentChild=enemySpawner.transform.GetChild(i).gameObject;
             if (currentChild.tag=="Enemy"){
                 currentChild.GetComponent<Pathfinder>().SetFollowing(false);
                 currentChild.GetComponent<Shooter>().ChangeFiringStatus(false);
                 Rigidbody2D currentRb2d=currentChild.GetComponent<Rigidbody2D>();
+                frozenEnemies.Add(currentChild);
                 currentVelocities.Add(currentRb2d.velocity);
                 currentRb2d.velocity=new Vector2(0f,0f);
             }
@@ -112,6 +117,7 @@ public class Powerup : MonoBehaviour
         }
     }
     void UnfreezeEnemies(){
+        /*
         for (int i=0;i<enemyCount;i++){
             GameObject currentChild=enemySpawner.transform.GetChild(i).gameObject;
             if (currentChild.tag=="Enemy"){
@@ -122,7 +128,17 @@ public class Powerup : MonoBehaviour
                 currentRb2d.velocity=currentVelocities[i];
             }
         }
-        enemyCount=0;
+        */
+        for (int i=0;i<frozenEnemies.Count;i++){
+            if (frozenEnemies[i]!=null){
+                GameObject currentEnemy=frozenEnemies[i];
+                currentEnemy.GetComponent<Pathfinder>().SetFollowing(true);
+                currentEnemy.GetComponent<Shooter>().ChangeFiringStatus(true);
+                currentEnemy.GetComponent<Rigidbody2D>().velocity=currentVelocities[i];
+                //Rigidbody2D currentRb2d=currentEnemy.GetComponent<Rigidbody2D>();
+            }
+        }
+        //enemyCount=0;
         currentVelocities.Clear();
     }
     void SetAllFalse(){
