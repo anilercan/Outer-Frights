@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: ac2fa65292bcdd247867426987278517, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5b9cc2cb70d249e45a82cd9f57c1d528, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 1294858546670938763}
   - component: {fileID: 7359296526760097744}
   m_Layer: 7
-  m_Name: Enemy 2
+  m_Name: Enemy 4
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -115,7 +115,7 @@ Transform:
   m_GameObject: {fileID: 9043386539832569087}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1943899385574481485}
@@ -180,20 +180,19 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.28656265, y: 1.4474002}
-      - {x: 0.11286002, y: 1.3763074}
-      - {x: 0.08946571, y: 1.2743516}
-      - {x: -0.0809727, y: 1.2762767}
-      - {x: -0.10467737, y: 1.358135}
-      - {x: -0.29268637, y: 1.4470834}
-      - {x: -0.47032773, y: 1.1886142}
-      - {x: -0.25068057, y: 0.606749}
-      - {x: -0.11123439, y: 0.65619534}
-      - {x: -0.11723861, y: 0.86022305}
-      - {x: 0.10988709, y: 0.86091965}
-      - {x: 0.10409124, y: 0.6554669}
-      - {x: 0.244993, y: 0.61186403}
-      - {x: 0.46662596, y: 1.1889755}
+    - - {x: -0.016876966, y: 1.594913}
+      - {x: -0.4952399, y: 1.5558094}
+      - {x: -0.65481704, y: 0.82655996}
+      - {x: -0.41605717, y: 0.5167996}
+      - {x: -0.34373426, y: 0.49581474}
+      - {x: -0.20898235, y: 0.49734378}
+      - {x: -0.12703276, y: 0.7730651}
+      - {x: 0.08755406, y: 0.77504593}
+      - {x: 0.20312384, y: 0.4988104}
+      - {x: 0.33306432, y: 0.49475238}
+      - {x: 0.41951486, y: 0.516482}
+      - {x: 0.65557, y: 0.83897364}
+      - {x: 0.49427277, y: 1.5638671}
 --- !u!114 &-4815641903576323385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,8 +205,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95006ffdcd3a05444bc2139c2f285151, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 150
-  scoreAdd: 500
+  health: 120
+  scoreAdd: 750
   hitEffect: {fileID: 4189771852744757136, guid: 014df9bd512310044999e07f212c99bc, type: 3}
   applyCameraShake: 0
 --- !u!114 &1294858546670938763
@@ -235,17 +234,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69686dd2b42b9cc4a8df6aa2bd5005ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 6801967348741159134, guid: 0a6646f011a034a43bb2c2ea389309b0, type: 3}
-  projectileSpeed: 10
+  projectilePrefab: {fileID: 6801967348741159134, guid: cff66706930bd1c498cc69450009b30e, type: 3}
+  projectileSpeed: 12
   projectileLifetime: 5
-  baseFireRate: 0.75
+  baseFireRate: 0.5
   vShaped: 0
   doubleLaser: 0
   doubleDamage: 0
   useAI: 1
-  fireRateVar: 0.25
+  fireRateVar: 0.1
   minFireRate: 0.1
   isFiring: 0
   rocketCount: 1
   rocketPrefab: {fileID: 0}
-  rocketCooldown: 1
+  rocketCooldown: 2

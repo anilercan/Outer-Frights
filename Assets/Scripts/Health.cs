@@ -42,6 +42,7 @@ public class Health : MonoBehaviour
         health=health-damage;
         if (health<=0){
             if (gameObject.tag!="Player"){
+                PlayHitEffect();
                 audioPlayer.PlayExplosion();
                 scoreKeeper.ModifyScore(scoreAdd);
             }

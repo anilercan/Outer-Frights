@@ -717,6 +717,7 @@ MonoBehaviour:
   - {fileID: 6890329203579110279, guid: 781d24cde90d53e4387403a96b441953, type: 3}
   - {fileID: 525317470187312611, guid: 6037b65538ec08842ad633a1f14ef751, type: 3}
   - {fileID: 525317470187312611, guid: 6037b65538ec08842ad633a1f14ef751, type: 3}
+  - {fileID: 525317470187312611, guid: e490015d19ece5b43b0ce7674b16de90, type: 3}
   powerupCooldown: 10
   isLooping: 1
 --- !u!4 &304293016
@@ -1087,10 +1088,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cb5d7ff701be821429d4c76cba742515, type: 2}
   - {fileID: 11400000, guid: a506b661bc95a334ea22bf0737fcb660, type: 2}
   - {fileID: 11400000, guid: 788503052ca6f2c45bb73a4067dca7b7, type: 2}
+  - {fileID: 11400000, guid: b17dfa7bab9e8074ca8ec7a589ff68c7, type: 2}
   - {fileID: 11400000, guid: 89ad29a50c9fb6c49bd3d96aad383c74, type: 2}
   - {fileID: 11400000, guid: 40600cd693c590a44be182aaae92814a, type: 2}
   - {fileID: 11400000, guid: d52ff87fb296135409fc55be70d2413e, type: 2}
   - {fileID: 11400000, guid: 3613b1dd7d6d6884d9a1bd976d274b70, type: 2}
+  - {fileID: 11400000, guid: cf0f5a2aa68a9654a829f9ef8b19faae, type: 2}
   - {fileID: 11400000, guid: b41f063a34350454598d7c1651fe1280, type: 2}
   finalBoss: {fileID: 9043386539832569087, guid: 3cb506c2a6275e64abe3183f3a1e76c8, type: 3}
   timeBetweenWaves: 1.6

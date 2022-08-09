@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5166279936b02bc4ab0c5b346e30b72e, type: 3}
+  m_Name: W- Medium Agile Wave
+  m_EditorClassIdentifier: 
+  enemyPrefabs:
+  - {fileID: 9043386539832569087, guid: 5771163f41059284aa638b918a63a9bb, type: 3}
+  - {fileID: 9043386539832569087, guid: 5771163f41059284aa638b918a63a9bb, type: 3}
+  pathPrefab: {fileID: 7825446605751312694, guid: 83bc2315cc9e7e946ba23d5bd2b2c7ea, type: 3}
+  moveSpeed: 8
+  spawnTimer: 2.5
+  spawnTimerVar: 0.5
+  minSpawnTime: 0.2

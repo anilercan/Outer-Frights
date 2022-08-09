@@ -24,6 +24,7 @@ public class Powerup : MonoBehaviour
     [SerializeField] bool healthPickup;
     [SerializeField] bool rocketPickup;
     [SerializeField] bool freezePickup;
+    [SerializeField] bool explosionPickup;
 
     //variables used in freeze
     //int enemyCount=0;
@@ -96,7 +97,19 @@ public class Powerup : MonoBehaviour
             yield return new WaitForSeconds(powerupDuration);
             UnfreezeEnemies();
         }
+        if (explosionPickup==true){
+            //List<GameObject> enemiesOnScreen=new List<GameObject>();
+            DestroyEnemies();
+        }
         Destroy(gameObject);
+    }
+    void DestroyEnemies(){
+        for (int i=0;i<enemySpawner.transform.childCount;i++){
+            GameObject currentChild=enemySpawner.transform.GetChild(i).gameObject;
+            if (currentChild.tag=="Enemy"){
+                currentChild.GetComponent<Health>().TakeDamage(currentChild.GetComponent<Health>().GetHealth());
+            }
+        }
     }
     void FreezeEnemies(){
         //int enemyCount=enemySpawner.transform.childCount;

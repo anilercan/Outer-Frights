@@ -16,6 +16,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] bool lastWaveIsReversed=true;
     [SerializeField] PickupSpawner pickupSpawner;
     Coroutine waveSpawning;
+    List<int> wavesSeen=new List<int>();
     /*
     void Start()
     {
@@ -57,14 +58,18 @@ public class EnemySpawner : MonoBehaviour
             */
             for (int i=0;i<waveCount;i++){
                 //currentWave=waveConfigs[Random.Range(0,7)];
+                int waveIndex=0;
                 if (lastWaveIsReversed==true){
-                    currentWave=waveConfigs[Random.Range(0,3)];
-                    lastWaveIsReversed=false;   
+                    waveIndex=GetRandomWaveIndex(true);
+                    currentWave=waveConfigs[waveIndex];
+                    lastWaveIsReversed=false;
                 }
                 else {
-                    currentWave=waveConfigs[Random.Range(4,7)];
+                    waveIndex=GetRandomWaveIndex(false);
+                    currentWave=waveConfigs[waveIndex];
                     lastWaveIsReversed=true;
                 }
+                //wavesSeen.Add(waveIndex);
                 for (int j=0;j<currentWave.GetEnemyCount();j++){
                     Instantiate(currentWave.GetEnemyPrefab(j),
                     currentWave.GetStartingWaypoint().position,
@@ -75,6 +80,7 @@ public class EnemySpawner : MonoBehaviour
                 yield return new WaitForSeconds(timeBetweenWaves);
             }
             //yield return new WaitForSeconds(timeBetweenLoops);
+            wavesSeen.Clear();
             Instantiate(finalBoss,new Vector3(0,15,0),Quaternion.identity);
             ChangeBossState();
             pickupSpawner.SetPowerupSpawnTime(20f);
@@ -82,6 +88,41 @@ public class EnemySpawner : MonoBehaviour
         }
         while(isLooping==true&&bossSpawned==false);
             
+    }
+    int GetRandomWaveIndex(bool value){
+        int returnIndex=0;
+        if (value==true){
+            returnIndex=Random.Range(0,5);
+            if (wavesSeen.Contains(returnIndex)==true){
+                returnIndex=Random.Range(0,5);
+                if (wavesSeen.Contains(returnIndex)==true){
+                    returnIndex=Random.Range(0,5);
+                    if (wavesSeen.Contains(returnIndex)==true){
+                        returnIndex=Random.Range(0,5);
+                        if (wavesSeen.Contains(returnIndex)==true){
+                            returnIndex=Random.Range(0,5);
+                        }
+                    }
+                }
+            }
+        }
+        else if (value==false){
+            returnIndex=Random.Range(5,10);
+            if (wavesSeen.Contains(returnIndex)==true){
+                returnIndex=Random.Range(5,10);
+                if (wavesSeen.Contains(returnIndex)==true){
+                    returnIndex=Random.Range(5,10);
+                    if (wavesSeen.Contains(returnIndex)==true){
+                        returnIndex=Random.Range(5,10);
+                        if (wavesSeen.Contains(returnIndex)==true){
+                            returnIndex=Random.Range(5,10);
+                        }
+                    }
+                }
+            }
+        }
+        wavesSeen.Add(returnIndex);
+        return returnIndex;
     }
     public WaveConfigSO GetCurrentWave(){
         return currentWave;

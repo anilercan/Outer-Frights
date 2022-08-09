@@ -116,6 +116,10 @@ public class Shooter : MonoBehaviour
                 if (gameObject.tag!="BossBody"){
                     firstBullet.GetComponent<Rigidbody2D>().velocity=new Vector2(0,-projectileSpeed);
                 }
+                if (gameObject.name=="Enemy 4(Clone)"){
+                    GameObject rightBullet = instance.transform.GetChild(1).gameObject;
+                    rightBullet.GetComponent<Rigidbody2D>().velocity=new Vector2(0,-projectileSpeed);
+                }
                 audioPlayer.PlayEnemyShootingClip();
             }
             Destroy(instance,projectileLifetime);
