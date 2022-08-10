@@ -37,7 +37,6 @@ public class Boss : MonoBehaviour
 
     void CheckBossHealth(){
         if (gameObject.transform.childCount<4){
-            //enemySpawner.BossSpawn();
             FindObjectOfType<EnemySpawner>().ChangeBossState();
             Destroy(gameObject);
         }
@@ -56,12 +55,8 @@ public class Boss : MonoBehaviour
         if (turretsDown==true){
             mainWeapons.ChangeFiringStatus(true);
             bossShield.SetActive(false);
-            //SetTurret(false);
             yield return new WaitForSeconds(shieldDownTimer);
-            //mainWeapons.ChangeFiringStatus();
             bossShield.SetActive(true);
-            //leftTurret.SetActive(true);
-            //rightTurret.SetActive(true);
             SetTurret(leftTurret,true);
             SetTurret(rightTurret,true);
             leftTurret.GetComponent<Health>().SetHealth(90);

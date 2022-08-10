@@ -3315,11 +3315,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 648197459}
     - target: {fileID: 4315941649488242468, guid: 92a332ed25696dc43aeed4f61814aa45, type: 3}
+      propertyPath: pauseScript
+      value: 
+      objectReference: {fileID: 4315941649488242476}
+    - target: {fileID: 4315941649488242468, guid: 92a332ed25696dc43aeed4f61814aa45, type: 3}
       propertyPath: optionsScreen
       value: 
       objectReference: {fileID: 1764428938}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92a332ed25696dc43aeed4f61814aa45, type: 3}
+--- !u!1 &2836817083383276734 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2070292482672722846, guid: 92a332ed25696dc43aeed4f61814aa45, type: 3}
+  m_PrefabInstance: {fileID: 2836817083383276733}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3786461523912760771
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3401,7 +3410,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7524126306845344271, guid: 92a332ed25696dc43aeed4f61814aa45, type: 3}
   m_PrefabInstance: {fileID: 2836817083383276733}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2836817083383276734}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95006ffdcd3a05444bc2139c2f285151, type: 3}
@@ -3412,12 +3421,27 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: -3551315839154101206, guid: 92a332ed25696dc43aeed4f61814aa45, type: 3}
   m_PrefabInstance: {fileID: 2836817083383276733}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2836817083383276734}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 69686dd2b42b9cc4a8df6aa2bd5005ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4315941649488242476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2836817083383276734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cb68c6f6deff3d43beeedeca9ade305, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gamePaused: 0
+  pauseScreen: {fileID: 648197459}
+  optionsScreen: {fileID: 1764428938}
 --- !u!1001 &8092572255528637929
 PrefabInstance:
   m_ObjectHideFlags: 0

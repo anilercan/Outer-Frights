@@ -14,9 +14,7 @@ public class Player : MonoBehaviour
     [SerializeField] float paddingRight;
     [SerializeField] float paddingUp;
     [SerializeField] float paddingDown;
-    [SerializeField] bool gamePaused=false;
-    [SerializeField] GameObject pauseScreen;
-    [SerializeField] GameObject optionsScreen;
+    [SerializeField] PauseScreen pauseScript;
     void Awake(){
         shooter=GetComponent<Shooter>();
     }
@@ -25,7 +23,6 @@ public class Player : MonoBehaviour
     }
     void Update(){
         Move();
-        CheckPauseState();
     }
     void Move(){
         Vector2 delta=rawInput*moveSpeed*Time.deltaTime;
@@ -36,35 +33,25 @@ public class Player : MonoBehaviour
     }
     
     void OnMove(InputValue value){
-        if (gamePaused==false){
+        if (pauseScript.gamePaused==false){
             rawInput=value.Get<Vector2>();
         }
     }
     void OnFire(InputValue value){
-        if (shooter!=null&&gamePaused==false){
+        if (shooter!=null&&pauseScript.gamePaused==false){
             shooter.isFiring=value.isPressed;
         }
     }
     void OnRocket(){ //InputValue value
-        if (gamePaused==false){
+        if (pauseScript.gamePaused==false){
             shooter.FireRocket();
         }
     }
     void OnPause(){
-        if (optionsScreen.activeSelf==false){
-            gamePaused=!gamePaused;
-        }
+        //pauseScript.gamePaused=!pauseScript.gamePaused;
+        pauseScript.PauseGame();
     }
-    void CheckPauseState(){
-        if (gamePaused==true&&Time.timeScale==1){
-            Time.timeScale=0;
-            pauseScreen.SetActive(true);
-        }
-        else if (gamePaused==false&&Time.timeScale==0){
-            Time.timeScale=1;
-            pauseScreen.SetActive(false);
-        }
-    }
+    
     void InitBounds(){
         Camera mainCamera=Camera.main;
         minBounds=mainCamera.ViewportToWorldPoint(new Vector2(0,0));

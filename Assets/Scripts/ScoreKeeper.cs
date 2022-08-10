@@ -5,7 +5,7 @@ using UnityEngine;
 public class ScoreKeeper : MonoBehaviour
 {
     int score=0;
-    int highScore=0;
+    //int highScore=0;
     static ScoreKeeper instance;
     void Awake(){
         ManageSingleton();
@@ -31,10 +31,12 @@ public class ScoreKeeper : MonoBehaviour
     public void ResetScore(){
         score=0;
     }
+    /*
     public int GetHighScore(){
         return highScore;
     }
     public void SetHighScore(int value){
         highScore=value;
     }
+    */
 }

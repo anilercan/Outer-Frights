@@ -8,18 +8,22 @@ public class UIGameOver : MonoBehaviour
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI highScore;
     ScoreKeeper scoreKeeper;
+    SavedPrefs savedPrefs;
     void Awake(){
         scoreKeeper=FindObjectOfType<ScoreKeeper>();
+        savedPrefs=FindObjectOfType<LevelManager>().GetComponent<SavedPrefs>();
+        savedPrefs.LoadGame();
     }
     void Start()
     {
         scoreText.text="You Scored:\n"+scoreKeeper.GetScore().ToString();
-        if (scoreKeeper.GetScore()>scoreKeeper.GetHighScore()){
+        if (scoreKeeper.GetScore()>savedPrefs.GetLocalHighscore()){
             highScore.text="High Score:\n"+scoreKeeper.GetScore().ToString();
-            scoreKeeper.SetHighScore(scoreKeeper.GetScore());
+            savedPrefs.SetLocalHighscore(scoreKeeper.GetScore());
+            savedPrefs.SaveGame();
         }
         else{
-            highScore.text="High Score:\n"+scoreKeeper.GetHighScore().ToString();
+            highScore.text="High Score:\n"+savedPrefs.GetLocalHighscore().ToString();
         }
     }
 }

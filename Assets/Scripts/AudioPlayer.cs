@@ -20,8 +20,16 @@ public class AudioPlayer : MonoBehaviour
     bool volUpPressed=false;
     bool volDownPressed=false;
     float lastVolumeLevel=0f;
+    SavedPrefs savedPrefs;
     void Awake(){
         audioPlayer=GetComponent<AudioPlayer>();
+        savedPrefs=FindObjectOfType<LevelManager>().GetComponent<SavedPrefs>();
+        savedPrefs.LoadGame();
+        masterVolume=savedPrefs.GetLocalVolumeLevel();
+        audioPlayer.GetComponent<AudioSource>().volume=masterVolume;
+        if (masterVolume<=0f){
+            bgmPlaying=false;
+        }
         ManageSingleton();
     }
     void Update(){
@@ -87,6 +95,8 @@ public class AudioPlayer : MonoBehaviour
             if (audioPlayer.GetComponent<AudioSource>().volume<1&&bgmPlaying==true){
                 audioPlayer.GetComponent<AudioSource>().volume+=0.05f;
                 masterVolume+=0.05f;
+                savedPrefs.SetLocalVolumeLevel(masterVolume);
+                savedPrefs.SaveGame();
             }
             if (audioPlayer.GetComponent<AudioSource>().volume>=0.05f&&bgmPlaying==false){
                 bgmPlaying=true;
@@ -97,6 +107,8 @@ public class AudioPlayer : MonoBehaviour
             if (audioPlayer.GetComponent<AudioSource>().volume>0&&bgmPlaying==true){
                 audioPlayer.GetComponent<AudioSource>().volume-=0.05f;
                 masterVolume-=0.05f;
+                savedPrefs.SetLocalVolumeLevel(masterVolume);
+                savedPrefs.SaveGame();
             }
             if (audioPlayer.GetComponent<AudioSource>().volume<=0&&bgmPlaying==false){
                 bgmPlaying=false;

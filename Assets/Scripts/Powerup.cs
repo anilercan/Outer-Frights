@@ -5,7 +5,6 @@ using UnityEngine;
 public class Powerup : MonoBehaviour
 {
     [Header("General")]
-    //[SerializeField] Player player;
     Player player;
     Shooter playerShooter;
     EnemySpawner enemySpawner;
@@ -27,7 +26,6 @@ public class Powerup : MonoBehaviour
     [SerializeField] bool explosionPickup;
 
     //variables used in freeze
-    //int enemyCount=0;
     List<Vector2> currentVelocities=new List<Vector2>();
     List<GameObject> frozenEnemies=new List<GameObject>();
     
@@ -47,7 +45,6 @@ public class Powerup : MonoBehaviour
         }
     }
     IEnumerator SetProjectile(){
-        //gameObject.SetActive(false);
         Destroy(gameObject.GetComponent<PolygonCollider2D>());
         Destroy(gameObject.GetComponent<SpriteRenderer>());
         if (vShaped==true){
@@ -92,13 +89,11 @@ public class Powerup : MonoBehaviour
             playerShooter.SetRocketCount(3);
         }
         if (freezePickup==true){
-            //List<GameObject> enemiesOnScreen=new List<GameObject>();
             FreezeEnemies();
             yield return new WaitForSeconds(powerupDuration);
             UnfreezeEnemies();
         }
         if (explosionPickup==true){
-            //List<GameObject> enemiesOnScreen=new List<GameObject>();
             DestroyEnemies();
         }
         Destroy(gameObject);
@@ -112,8 +107,6 @@ public class Powerup : MonoBehaviour
         }
     }
     void FreezeEnemies(){
-        //int enemyCount=enemySpawner.transform.childCount;
-        //Debug.Log("Child count: "+enemyCount.ToString());
         for (int i=0;i<enemySpawner.transform.childCount;i++){
             GameObject currentChild=enemySpawner.transform.GetChild(i).gameObject;
             if (currentChild.tag=="Enemy"){
@@ -130,28 +123,14 @@ public class Powerup : MonoBehaviour
         }
     }
     void UnfreezeEnemies(){
-        /*
-        for (int i=0;i<enemyCount;i++){
-            GameObject currentChild=enemySpawner.transform.GetChild(i).gameObject;
-            if (currentChild.tag=="Enemy"){
-                currentChild.GetComponent<Pathfinder>().SetFollowing(true);
-                currentChild.GetComponent<Shooter>().ChangeFiringStatus(true);
-                Rigidbody2D currentRb2d=currentChild.GetComponent<Rigidbody2D>();
-                //currentVelocities.Add(currentRb2d.velocity);
-                currentRb2d.velocity=currentVelocities[i];
-            }
-        }
-        */
         for (int i=0;i<frozenEnemies.Count;i++){
             if (frozenEnemies[i]!=null){
                 GameObject currentEnemy=frozenEnemies[i];
                 currentEnemy.GetComponent<Pathfinder>().SetFollowing(true);
                 currentEnemy.GetComponent<Shooter>().ChangeFiringStatus(true);
                 currentEnemy.GetComponent<Rigidbody2D>().velocity=currentVelocities[i];
-                //Rigidbody2D currentRb2d=currentEnemy.GetComponent<Rigidbody2D>();
             }
         }
-        //enemyCount=0;
         currentVelocities.Clear();
     }
     void SetAllFalse(){
