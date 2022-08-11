@@ -16,6 +16,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] bool lastWaveIsReversed=true;
     [SerializeField] PickupSpawner pickupSpawner;
     Coroutine waveSpawning;
+    int randomWave=0;
     List<int> wavesSeen=new List<int>();
     /*
     void Start()
@@ -60,12 +61,16 @@ public class EnemySpawner : MonoBehaviour
                 //currentWave=waveConfigs[Random.Range(0,7)];
                 int waveIndex=0;
                 if (lastWaveIsReversed==true){
-                    waveIndex=GetRandomWaveIndex(true);
+                    StartCoroutine(GetRandomWaveIndex(true));
+                    waveIndex=randomWave;
+                    //waveIndex=GetRandomWaveIndex(true);
                     currentWave=waveConfigs[waveIndex];
                     lastWaveIsReversed=false;
                 }
                 else {
-                    waveIndex=GetRandomWaveIndex(false);
+                    StartCoroutine(GetRandomWaveIndex(false));
+                    waveIndex=randomWave;
+                    //waveIndex=GetRandomWaveIndex(false);
                     currentWave=waveConfigs[waveIndex];
                     lastWaveIsReversed=true;
                 }
@@ -89,6 +94,7 @@ public class EnemySpawner : MonoBehaviour
         while(isLooping==true&&bossSpawned==false);
             
     }
+    /*
     int GetRandomWaveIndex(bool value){
         int returnIndex=0;
         if (value==true){
@@ -123,6 +129,23 @@ public class EnemySpawner : MonoBehaviour
         }
         wavesSeen.Add(returnIndex);
         return returnIndex;
+    }
+    */
+    IEnumerator GetRandomWaveIndex(bool value){
+        if (value==true){
+            randomWave=Random.Range(0,5);
+            while(wavesSeen.Contains(randomWave)==true){
+                randomWave=Random.Range(0,5);
+            }
+        }
+        if (value==false){
+            randomWave=Random.Range(5,10);
+            while(wavesSeen.Contains(randomWave)==true){
+                randomWave=Random.Range(5,10);
+            }
+        }
+        wavesSeen.Add(randomWave);
+        yield return null;
     }
     public WaveConfigSO GetCurrentWave(){
         return currentWave;

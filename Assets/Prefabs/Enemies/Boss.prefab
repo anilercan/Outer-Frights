@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 950533337144821776}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.26, z: 0}
+  m_LocalPosition: {x: 0, y: -0.77, z: 0}
   m_LocalScale: {x: 4, y: -4, z: 3.6251}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -184,7 +184,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1713609896899405401}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.65, y: -1.2, z: -0.0058938}
+  m_LocalPosition: {x: -2.65, y: -2.23, z: -0.0058938}
   m_LocalScale: {x: 2.5, y: 2.5, z: 1.5657}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -347,6 +347,10 @@ MonoBehaviour:
   fireRateVar: 0.25
   minFireRate: 0.1
   isFiring: 1
+  rocketCount: 1
+  rocketPrefab: {fileID: 0}
+  rocketCooldown: 2
+  enemySpawner: {fileID: 0}
 --- !u!1 &3229240209577872341
 GameObject:
   m_ObjectHideFlags: 0
@@ -377,7 +381,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3229240209577872341}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.65, y: -1.2, z: -0.0058938}
+  m_LocalPosition: {x: 2.65, y: -2.23, z: -0.0058938}
   m_LocalScale: {x: -2.5, y: 2.5, z: 1.5657}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -540,6 +544,10 @@ MonoBehaviour:
   fireRateVar: 0.25
   minFireRate: 0.1
   isFiring: 1
+  rocketCount: 1
+  rocketPrefab: {fileID: 0}
+  rocketCooldown: 2
+  enemySpawner: {fileID: 0}
 --- !u!1 &4136391777663998624
 GameObject:
   m_ObjectHideFlags: 0
@@ -570,7 +578,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4136391777663998624}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.03, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -785,6 +793,10 @@ MonoBehaviour:
   fireRateVar: 0
   minFireRate: 0.1
   isFiring: 0
+  rocketCount: 1
+  rocketPrefab: {fileID: 0}
+  rocketCooldown: 2
+  enemySpawner: {fileID: 0}
 --- !u!1 &9043386539832569087
 GameObject:
   m_ObjectHideFlags: 0

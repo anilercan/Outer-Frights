@@ -24,6 +24,8 @@ public class Powerup : MonoBehaviour
     [SerializeField] bool rocketPickup;
     [SerializeField] bool freezePickup;
     [SerializeField] bool explosionPickup;
+    [SerializeField] bool shieldsPickup;
+    [SerializeField] bool homingLasers;
 
     //variables used in freeze
     List<Vector2> currentVelocities=new List<Vector2>();
@@ -96,7 +98,22 @@ public class Powerup : MonoBehaviour
         if (explosionPickup==true){
             DestroyEnemies();
         }
+        if (shieldsPickup==true){
+            SetShields(true);
+            yield return new WaitForSeconds(powerupDuration);
+            SetShields(false);
+        }
+        if (homingLasers==true){
+            //MarkClosestEnemy();
+            playerShooter.SetHoming(true);
+            yield return new WaitForSeconds(powerupDuration);
+            playerShooter.SetHoming(false);
+        }
         Destroy(gameObject);
+    }
+
+    void SetShields(bool status){
+        player.ShieldsStatus(status);
     }
     void DestroyEnemies(){
         for (int i=0;i<enemySpawner.transform.childCount;i++){
@@ -132,11 +149,34 @@ public class Powerup : MonoBehaviour
             }
         }
         currentVelocities.Clear();
+        frozenEnemies.Clear();
     }
     void SetAllFalse(){
         playerShooter.vShaped=false;
         playerShooter.doubleLaser=false;
         playerShooter.doubleDamage=false;
     }
+
+    /*
+    Transform GetClosestEnemy (Transform[] enemies)
+    {
+        Transform bestTarget = null;
+        float closestDistanceSqr = Mathf.Infinity;
+        Vector3 currentPosition = transform.position;
+        foreach(Transform potentialTarget in enemies)
+        {
+            Vector3 directionToTarget = potentialTarget.position - currentPosition;
+            float dSqrToTarget = directionToTarget.sqrMagnitude;
+            if(dSqrToTarget < closestDistanceSqr)
+            {
+                closestDistanceSqr = dSqrToTarget;
+                bestTarget = potentialTarget;
+            }
+        }
+     
+        return bestTarget;
+    }
+    */
+    
     
 }

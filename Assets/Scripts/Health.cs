@@ -53,10 +53,8 @@ public class Health : MonoBehaviour
                 Destroy(gameObject);
             }
             else{
-                //gameObject.GetComponent<Shooter>().ChangeFiringStatus();
                 enemyBoss=FindObjectOfType<Boss>();
                 enemyBoss.SetTurret(gameObject,false);
-                //gameObject.SetActive(false);
             }
         }
     }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9083379442247586282}
   - component: {fileID: 3723271761238127031}
   - component: {fileID: 2412017221517147814}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: laserLeft 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,7 +150,7 @@ GameObject:
   - component: {fileID: 4030109574760219254}
   - component: {fileID: 7818692636377266043}
   - component: {fileID: 7683116958987100150}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: laserLeft 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -287,7 +287,7 @@ GameObject:
   - component: {fileID: 7925438235261398840}
   - component: {fileID: 8043296476742324813}
   - component: {fileID: 5519036878092950601}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: laserRight 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -420,7 +420,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1234789368977132972}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: ProjectileBoss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -459,7 +459,7 @@ GameObject:
   - component: {fileID: 168198963155327295}
   - component: {fileID: 6370912846097162226}
   - component: {fileID: 3486851683721724339}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: laserRight 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

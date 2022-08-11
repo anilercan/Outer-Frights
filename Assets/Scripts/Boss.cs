@@ -76,7 +76,7 @@ public class Boss : MonoBehaviour
         //rightTurret.GetComponent<Health>().SetHealth(90);
     }
     void MoveBoss(){
-        Vector3 targetPosition=new Vector3 (0,4,0);
+        Vector3 targetPosition=new Vector3 (0,5,0);
         float delta=moveSpeed*Time.deltaTime;
         transform.position=Vector2.MoveTowards(transform.position,targetPosition,delta);
         if (transform.position==targetPosition){

@@ -15,14 +15,19 @@ public class Player : MonoBehaviour
     [SerializeField] float paddingUp;
     [SerializeField] float paddingDown;
     [SerializeField] PauseScreen pauseScript;
+    GameObject playerShield;
+    bool shieldsUp=false;
+
     void Awake(){
         shooter=GetComponent<Shooter>();
+        playerShield = gameObject.transform.GetChild(1).gameObject;
     }
     void Start(){
         InitBounds();
     }
     void Update(){
         Move();
+        CheckShields();
     }
     void Move(){
         Vector2 delta=rawInput*moveSpeed*Time.deltaTime;
@@ -42,13 +47,12 @@ public class Player : MonoBehaviour
             shooter.isFiring=value.isPressed;
         }
     }
-    void OnRocket(){ //InputValue value
+    void OnRocket(){ 
         if (pauseScript.gamePaused==false){
             shooter.FireRocket();
         }
     }
     void OnPause(){
-        //pauseScript.gamePaused=!pauseScript.gamePaused;
         pauseScript.PauseGame();
     }
     
@@ -56,5 +60,12 @@ public class Player : MonoBehaviour
         Camera mainCamera=Camera.main;
         minBounds=mainCamera.ViewportToWorldPoint(new Vector2(0,0));
         maxBounds=mainCamera.ViewportToWorldPoint(new Vector2(1,1));
+    }
+    public void ShieldsStatus(bool status){
+        shieldsUp=status;
+    }
+    void CheckShields(){
+        //gameObject.GetComponent<PolygonCollider2D>().enabled=!shieldsUp;
+        gameObject.transform.GetChild(1).gameObject.SetActive(shieldsUp);
     }
 }

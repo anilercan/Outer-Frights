@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4509154777985876073}
   - component: {fileID: 8650058627362850575}
   - component: {fileID: 196905996793342616}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: laserBlue01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1234789368977132972}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: ProjectileEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
